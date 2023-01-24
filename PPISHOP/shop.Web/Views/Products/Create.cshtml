@@ -1,0 +1,74 @@
+﻿@model shop.Web.Models.ProducViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <center>
+        <h1 class="text-success">Crear Producto</h1>
+    </center>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" type="file" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastPurchase" class="control-label"></label>
+                <input asp-for="LastPurchase" class="form-control" />
+                <span asp-validation-for="LastPurchase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastSale" class="control-label"></label>
+                <input asp-for="LastSale" class="form-control" />
+                <span asp-validation-for="LastSale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsAvailabe" /> @Html.DisplayNameFor(model => model.IsAvailabe)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6">
+                    <input type="submit" value="Crear" class="create" />
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <a asp-action="Index" class="btn btn-primary">Devolver a la lista</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <br /><br />
+        <img src="~/images/crear.jpg" alt="ASP.NET" class="img-responsive glyphicon-align-center" />
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

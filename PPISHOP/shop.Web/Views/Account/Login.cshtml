@@ -1,0 +1,79 @@
+﻿@model shop.Web.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                <img src="~/images/menu.jpg" alt="ASP.NET" class="img-responsive glyphicon-align-center" />
+            </center>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-6">
+            <center><h1 class="text-success"><strong>Login</strong></h1>
+            </center>
+            <br />
+            <div class="wrap-login100">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="El usuario es requerido">
+                        <span>
+                            <label asp-for="Username" class="label-input100">Usuario</label>
+                        </span>
+                        <input asp-for="Username" class="input100" />
+                        <span asp-validation-for="Username" class="text-warning"></span>
+                    </div>
+                    <br /><br />
+
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="El usuario es requerido">
+                        <span>
+                            <label asp-for="Password" class="label-input100">Contraseña</label>
+                        </span>
+                        <input asp-for="Password" type="password" class="input100" />
+                        <span asp-validation-for="Password" class="text-warning"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input asp-for="RememberMe" type="checkbox" class="form-check-input" />
+
+                            <label asp-for="RememberMe" class="form-check-label">¿Recordar?</label>
+                        </div>
+
+                        <span asp-validation-for="RememberMe" class="text-warning"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                      
+                        <div class="col-md-5">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-5">
+                                <right><a asp-action="Register" class="btn btn-info">Registrarse</a></right>
+                                <a asp-action="RecoverPassword" class="btn btn-link">¿olvidastes tu contraseña?</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <center>
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn btn-success" />
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<shop.Web.Data.Entities.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<center><h1 class="text-success">Ordenes</h1>
+</center>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nueva Orden</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @if (this.User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.User.FullName)
+                </th>
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDateLocal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lines)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (this.User.IsInRole("Admin"))
+                {
+                    <th>
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                    </th>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDateLocal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lines)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a>
+                    <a asp-action="DeleteOrder" asp-route-id="@item.Id"class="btn btn-danger">Cancelar Orden</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

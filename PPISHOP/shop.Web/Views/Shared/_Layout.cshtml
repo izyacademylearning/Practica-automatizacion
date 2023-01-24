@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - shop.Web</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" />
+
+    </environment>
+
+    
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="~/node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+        <link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <nav class="rd-navbar-nav-wrap toggle-original-elements">
+        <div class="container">
+                   <div class="navbar-collapse collapse">
+                       <ul class="nav navbar-nav">
+                           <li class="rd-nav-item active">
+                               <img src="~/images/dise.jpg" alt="ASP.NET" class="img-responsive glyphicon-align-center" />
+                           </li>
+                           <li class="rd-nav-item active">
+                               <a asp-area="" asp-controller="Home" asp-action="Index" class="rd-nav-link">
+                                   Pagina Principal
+                               </a>
+                           </li>
+                           <li class="rd-nav-item active">
+                               <a asp-area="" asp-controller="Home" asp-action="About" class="rd-nav-link">
+                                   Acerca
+                               </a>
+                           </li>
+                           <li class="rd-nav-item active">
+                               <a asp-area="" asp-controller="Home" asp-action="Contact" class="rd-nav-link">
+                                   Contactenos
+                               </a>
+                           </li>
+                           <li class="rd-nav-item active">
+                               <a asp-area="" asp-controller="Products" asp-action="Index" class="rd-nav-link">
+                                   Productos
+                               </a>
+                           </li>
+
+                           <li><a asp-area="" asp-controller="Orders" asp-action="Index">Ordenes</a></li>
+
+
+                           @if (this.User.IsInRole("Admin"))
+                           {
+                               <th>
+                               <li><a asp-area="" asp-controller="Orders" asp-action="SubmitOrders">Despacho Ordenes</a></li>
+                               </th>
+                           }
+
+                       
+
+
+
+                       </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="ChangeUser">@this.User.Identity.Name</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                    }
+                </ul>
+<br /><br />
+            </div>
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; https://postrejuanita.azurewebsites.net</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+
+        <script src="~/node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script> 
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

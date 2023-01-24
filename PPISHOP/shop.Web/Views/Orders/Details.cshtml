@@ -1,0 +1,65 @@
+﻿@model shop.Web.Data.Entities.Product
+
+ 
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<center>
+    <h1 class="text-success">Detalle Producto</h1>
+</center>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <strong>
+            <div class="col-md-4 resultado">
+
+                @Html.DisplayNameFor(model => model.Name)
+                <br />
+
+
+                @Html.DisplayNameFor(model => model.Price)
+                <br />
+
+                @Html.DisplayNameFor(model => model.User)
+                <br />
+
+
+
+
+
+
+
+
+            </div>
+        </strong>
+        <div class="col-md-6 resultado">
+
+            @Html.DisplayFor(model => model.Name)
+            <br />
+
+
+            @Html.DisplayFor(model => model.Price)
+            <br />
+
+            @Html.DisplayFor(model => model.User)
+            <br />
+
+
+        </div>
+
+
+        <div class="col-md-2">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:300px; height: auto;" />
+            }
+        </div>
+
+    </div>
+
+
+</div>

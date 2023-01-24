@@ -1,0 +1,79 @@
+﻿@model shop.Web.Data.Entities.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<center>
+    <h1 class="text-success">Detalle Producto</h1>
+</center>
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <strong>
+            <div class="col-md-4 resultado">
+
+                @Html.DisplayNameFor(model => model.Name)
+                <br />
+              
+
+                @Html.DisplayNameFor(model => model.Price)
+                <br />
+
+
+                @Html.DisplayNameFor(model => model.LastPurchase)
+                <br />
+
+
+                @Html.DisplayNameFor(model => model.LastSale)
+                <br />
+
+
+                @Html.DisplayNameFor(model => model.IsAvailabe)
+                <br />
+
+
+                @Html.DisplayNameFor(model => model.Stock)
+            </div>
+        </strong>
+        <div class="col-md-6 resultado">
+
+            @Html.DisplayFor(model => model.Name)
+            <br />
+         
+
+            @Html.DisplayFor(model => model.Price)
+            <br />
+
+            @Html.DisplayFor(model => model.LastPurchase)
+            <br />
+
+            @Html.DisplayFor(model => model.LastSale)
+            <br />
+            @Html.DisplayFor(model => model.IsAvailabe)
+            <br />
+            @Html.DisplayFor(model => model.Stock)
+
+        </div>
+        <div class="col-md-2">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Url.Content(Model.ImageUrl)" alt="Image" style="width:300px; height: auto;" />
+            }
+        </div>
+    </div>
+
+
+</div>
+
+<br />
+<br />
+<center>
+    <div class="row">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warninging">Editar</a> |
+        <a asp-action="Index" class="btn btn-warninging">Devolver a la lista de productos</a>
+    </div>
+</center>
